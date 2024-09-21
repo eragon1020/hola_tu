@@ -1,3 +1,10 @@
 img{
     width: 50px;
 }
+input[type="radio"]{
+    display: none;
+}
+label.seleccionado img {
+    transform: scale(1.2); /* Escala la prenda seleccionada */
+    transition: transform 0.3s ease; /* Añade una transición suave */
+}

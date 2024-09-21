@@ -3,7 +3,6 @@ export const ropa = [
     {id:"abrigo--m--00", name:"abrigo", img:"./ropa/el/abrigo.svg", size:[100,100], position:[0,0], type:"pecho--externo", gender:"masculino"},
     {id:"camisa--m--03", name:"camisa_3", img:"./ropa/el/camisa_3.svg", size:[100,100], position:[0,0], type:"pecho", gender:"masculino"},
     {id:"abrigo--m--02", name:"abrigo_3", img:"./ropa/el/abrigo_3.svg", size:[100,100], position:[0,0], type:"pecho--externo", gender:"masculino"},
-    {id:"body--m--00", name:"body", img:"./ropa/el/body.svg", size:[100,100], position:[0,0], type:"body", gender:"masculino"},
     {id:"camisa--m--00", name:"camisa", img:"./ropa/el/camisa.svg", size:[100,100], position:[0,0], type:"pecho", gender:"masculino"},
     {id:"camisa--m--01", name:"camisa_2", img:"./ropa/el/camisa_2.svg", size:[100,100], position:[0,0], type:"pecho", gender:"masculino"},
     {id:"chaleco--m--00", name:"chaleco", img:"./ropa/el/chaleco.svg", size:[100,100], position:[0,0], type:"pecho--externo", gender:"masculino"},
