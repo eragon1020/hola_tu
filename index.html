@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ella</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ropa.css">
+     <script type="module" src="index.js"></script>
 </head>
 <body>
-    <section id="vestuario">
-        <h2>Vestuario</h2>
-        <div id="modelo">
-            <div class="modelo_body">
-                <div class="parte parte_caveza"></div>
-            </div>
-            <div class="modelo_config"></div>
-        </div>
-        <div id="guradaropa">
-        </div>
-    </section>
-    <section id="save_avatar"></section>
-
- 
+<div id="vestuario">
+    <!-- Sección para el guardarropa y modelo femenino -->
+    <div class="seccion-vestuario">
+        <h1>mujer</h1>
+        <div id="guradaropa--f"></div> <!-- Guardarropa para mujer -->
+        <div id="modelo--f" class="modelo"></div> <!-- Modelo femenino -->
     </div>
-    <script type="module" src="index.js"></script>
+    
+    <!-- Sección para el guardarropa y modelo masculino -->
+    <div class="seccion-vestuario">
+        <h1>hombre</h1>
+        <div id="guradaropa--m"></div> <!-- Guardarropa para hombre -->
+        <div id="modelo--m" class="modelo"></div> <!-- Modelo masculino -->
+    </div>
+</div>
+
+    <section id="save_avatar"></section>
+   
 </body>
 </html>

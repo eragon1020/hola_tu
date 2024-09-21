@@ -1,0 +1,84 @@
+/* Estilo para el contenedor del modelo */
+.modelo {
+    position: relative;
+    width: 300px;
+    /* Ajusta el tamaño del modelo según tu preferencia */
+    height: 600px;
+    /* Ajusta según la altura del body */
+    margin: 0 auto;
+}
+
+/* El body debe ser el fondo base */
+.modelo_body--femenino,.modelo_body--masculino {
+    position: relative;
+    /* Importante para el posicionamiento relativo */
+    width: 100%;
+    height: 100%;
+}
+
+/* Posicionamiento de cada parte del cuerpo */
+.parte {
+    position: absolute;
+    width: 100%;
+    /* Puedes ajustar estos valores dependiendo del diseño */
+    height: 100%;
+}
+
+/* Ejemplo de posicionamiento de las prendas en cada parte del cuerpo */
+/* Ajusta estos valores según el tamaño del modelo */
+
+.parte--cabeza {
+top: 10%;
+    left: 30%;
+    width: 125px;
+    height: 50px;
+    z-index: 4;
+}
+
+.parte--pecho {
+    top: 25%;
+    left: 20%;
+    width: 60%;
+    height: 30%;
+    z-index: 2;
+}
+
+.parte--pecho--externo {
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    height: 35%;
+    z-index: 3;
+}
+
+.parte--piernas {
+    top: 55%;
+    left: 25%;
+    width: 50%;
+    height: 35%;
+    z-index: 1;
+}
+
+.parte--pies {
+    top: 90%;
+    left: 30%;
+    width: 40%;
+    height: 10%;
+    z-index: 0;
+}
+
+/* Asegurar que las prendas se posicionen correctamente */
+.prenda img {
+    width: 100%;
+    /* Ajustar para asegurarse de que la imagen encaje en el div */
+    height: 100%;
+}
+
+/* La imagen del body */
+.modelo_body--femenino>img, .modelo_body--masculino>img {
+    position: relative;
+    z-index: -1;
+    /* Asegura que el body esté detrás de las prendas */
+    width: 100%;
+    height: 100%;
+}

@@ -1,47 +1,73 @@
-export const agregarRopa = (ropa, contenedor, gender) => {
-    
-    const ul = document.createElement("ul");
-    ul.className = `guardaropa guardaropa--${gender.charAt(0)}`;
+// Función para crear el elemento <input> (radio) 
+const crearRadio = (prenda, gender, aplicarRopaAlCuerpo) => {
+  let radio = document.createElement("input");
+  radio.type = "radio";
+  radio.id = prenda.id;
+  radio.name = prenda.type + gender.charAt(0);
 
-    const categorias = ["cabeza", "pecho", "pecho--externo", "piernas", "pies"];
+  // Agregar evento para aplicar la prenda al cuerpo cuando se selecciona el radio button
+  radio.addEventListener("change", () => {
+    aplicarRopaAlCuerpo(gender, prenda); // Aplica la ropa al cuerpo
+  });
 
-    categorias.forEach((categoria) => {
-        // Crear los <li> para cada categoría
-        let li = document.createElement("li");
-        li.className = `cajon cajon--${categoria}`;
+  return radio;
+};
 
-        ropa.forEach((prenda) => {
-            if (prenda.type === categoria && prenda.gender === gender) {
-                let radio = document.createElement("input");
-                radio.type = "radio";
-                radio.id = prenda.id;
-                radio.name = prenda.type + gender.charAt(0);
+// Función para crear el <img> de la prenda
+const crearImagenPrenda = (prenda) => {
+  let img = document.createElement("img");
+  img.src = prenda.img;
+  img.alt = prenda.name;
+  return img;
+};
 
-                let label = document.createElement("label");
-                label.htmlFor = prenda.id;
+// Función para crear el <label> y agregar evento de click
+const crearLabelPrenda = (prenda, li) => {
+  let label = document.createElement("label");
+  label.htmlFor = prenda.id;
 
-                let img = document.createElement("img");
-                img.src = prenda.img;
-                img.alt = prenda.name;
-                
-                // Añadir evento click al label para seleccionar la prenda
-                label.addEventListener("click", () => {
-                    // Remover la clase 'seleccionado' de todos los labels en la misma categoría
-                    const labelsEnCategoria = li.querySelectorAll("label");
-                    labelsEnCategoria.forEach((lbl) => lbl.classList.remove("seleccionado"));
-                    
-                    // Añadir la clase 'seleccionado' al label actual
-                    label.classList.add("seleccionado");
-                });
+  // Agregar la imagen al label
+  let img = crearImagenPrenda(prenda);
+  label.appendChild(img);
 
-                label.appendChild(img);
-                li.appendChild(label);
-                li.appendChild(radio);
-                ul.appendChild(li);
-            }
-        });
+  // Agregar evento para seleccionar la prenda (visualmente)
+  label.addEventListener("click", () => {
+    const labelsEnCategoria = li.querySelectorAll("label");
+    labelsEnCategoria.forEach((lbl) => lbl.classList.remove("seleccionado"));
+    label.classList.add("seleccionado");
+  });
+
+  return label;
+};
+
+// Función para crear el <li> para cada categoría
+const crearLiCategoria = (categoria) => {
+  let li = document.createElement("li");
+  li.className = `cajon cajon--${categoria}`;
+  return li;
+};
+
+// Función principal para agregar la ropa
+export const agregarRopa = (ropa, contenedor, gender, aplicarRopaAlCuerpo) => {
+  const ul = document.createElement("ul");
+  ul.className = `guardaropa guardaropa--${gender.charAt(0)}`;
+
+  const categorias = ["cabeza", "pecho", "pecho--externo", "piernas", "pies"];
+
+  categorias.forEach((categoria) => {
+    let li = crearLiCategoria(categoria);
+
+    ropa.forEach((prenda) => {
+      if (prenda.type === categoria && prenda.gender === gender) {
+        let radio = crearRadio(prenda, gender, aplicarRopaAlCuerpo);
+        let label = crearLabelPrenda(prenda, li);
+
+        li.appendChild(label);
+        li.appendChild(radio);
+        ul.appendChild(li);
+      }
     });
+  });
 
-    contenedor.appendChild(ul);
-    document.body.appendChild(contenedor);
+  contenedor.appendChild(ul);
 };

@@ -7,4 +7,10 @@ input[type="radio"]{
 label.seleccionado img {
     transform: scale(1.2); /* Escala la prenda seleccionada */
     transition: transform 0.3s ease; /* Añade una transición suave */
+    background-color: aqua;
+    border-radius: 100%;
+}
+.parte {
+    width: 100px;
+    height: 100px;
 }
