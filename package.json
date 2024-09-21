@@ -1,0 +1,22 @@
+{
+  "name": "hola_tu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eragon1020/hola_tu.git"
+  },
+  "keywords": [
+    "amor"
+  ],
+  "author": "bryam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eragon1020/hola_tu/issues"
+  },
+  "homepage": "https://github.com/eragon1020/hola_tu#readme",
+  "description": ""
+}
