@@ -1,3 +1,7 @@
+ul {
+    list-style: none;
+}
+
 img {
     width: 50px;
 }
@@ -11,8 +15,9 @@ label.seleccionado img {
     /* Escala la prenda seleccionada */
     transition: transform 0.3s ease;
     /* Añade una transición suave */
-    background-color: aqua;
-    border-radius: 100%;
+    background: rgb(8, 174, 199);
+    background: radial-gradient(circle, rgba(8, 173, 199, 0.849) 1%, rgba(182, 227, 236, 0) 70%);
+
 }
 
 .parte {

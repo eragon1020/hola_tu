@@ -31,8 +31,6 @@ document.getElementById("guardarAvatar").addEventListener("click", function () {
   const contenedorAvatares = document.getElementById("avataresGuardados");
 
   // Estilo para los avatares guardados
-  avatarF.style.margin = "10px";
-  avatarM.style.margin = "10px";
 
   // Añade los avatares al contenedor
   contenedorAvatares.appendChild(avatarF);
