@@ -1,13 +1,13 @@
 // Función para crear el elemento <input> (radio) 
-const crearRadio = (prenda, gender, aplicarRopaAlCuerpo) => {
+const crearRadio = (prenda, body, aplicarRopaAlCuerpo) => {
   let radio = document.createElement("input");
   radio.type = "radio";
   radio.id = prenda.id;
-  radio.name = prenda.type + gender.charAt(0);
+  radio.name = prenda.type + body.gender.charAt(0);
 
   // Agregar evento para aplicar la prenda al cuerpo cuando se selecciona el radio button
   radio.addEventListener("change", () => {
-    aplicarRopaAlCuerpo(gender, prenda); // Aplica la ropa al cuerpo
+    aplicarRopaAlCuerpo(body, prenda); // Aplica la ropa al cuerpo
   });
 
   return radio;
@@ -48,9 +48,9 @@ const crearLiCategoria = (categoria) => {
 };
 
 // Función principal para agregar la ropa
-export const agregarRopa = (ropa, contenedor, gender, aplicarRopaAlCuerpo) => {
+export const agregarRopa = (ropa, contenedor, body, aplicarRopaAlCuerpo) => {
   const ul = document.createElement("ul");
-  ul.className = `guardaropa guardaropa--${gender.charAt(0)}`;
+  ul.className = `guardaropa guardaropa--${body.gender.charAt(0)}`;
 
   const categorias = ["cabeza", "pecho", "pecho--externo", "piernas", "pies"];
 
@@ -58,8 +58,8 @@ export const agregarRopa = (ropa, contenedor, gender, aplicarRopaAlCuerpo) => {
     let li = crearLiCategoria(categoria);
 
     ropa.forEach((prenda) => {
-      if (prenda.type === categoria && prenda.gender === gender) {
-        let radio = crearRadio(prenda, gender, aplicarRopaAlCuerpo);
+      if (prenda.type === categoria && prenda.gender === body.gender) {
+        let radio = crearRadio(prenda, body, aplicarRopaAlCuerpo);
         let label = crearLabelPrenda(prenda, li);
 
         li.appendChild(label);

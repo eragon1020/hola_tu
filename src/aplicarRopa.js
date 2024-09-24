@@ -1,6 +1,7 @@
-export const aplicarRopaAlCuerpo = (gender, prenda) => {
+export const aplicarRopaAlCuerpo = (body, prenda) => {
   // Obtenemos el contenedor del modelo (div que representa el cuerpo)
-  const modelo = document.querySelector(`#modelo--${gender.charAt(0)}`);
+  const selector = `#modelo--${body.gender.charAt(0)}`
+  const modelo = document.querySelector(selector);
 
   // Identificamos la parte del cuerpo en la que debe ir la prenda
   const parteDelCuerpo = modelo.querySelector(
@@ -22,25 +23,22 @@ export const aplicarRopaAlCuerpo = (gender, prenda) => {
 
     // Agregar la imagen al div de la prenda
     divPrenda.appendChild(imgPrenda);
-
     // Insertar el div de la prenda dentro de la parte del cuerpo
     parteDelCuerpo.appendChild(divPrenda);
+    const prendaElement = document.querySelector(`${selector} .parte--${prenda.type}`)
+
+    generarEstilosCSS(prendaElement, prenda);
   }
 };
 
-const generarEstilosCSS = (prenda) => {
-    return  `
-      .parte--${prenda.type} {
-        position: absolute;
-        top: ${prenda.top};
-        left: ${prenda.left};
-        width: ${prenda.width};
-        height: ${prenda.height};
-      }
-    `;
-}
+const generarEstilosCSS = (elemento, prenda) => {
+  // Asegurarse de agregar unidades ('px' en este caso) si no están presentes
+  const addUnit = (value) => (typeof value === 'number' ? `${value}px` : value);
 
-// Uso de la función
-// const estilosGenerados = generarEstilosCSS(prendas);
-// console.log(estilosGenerados);
-
+  // Aplicar estilos de posición, tamaño y ajuste de la prenda
+  elemento.style.position = 'absolute';
+  elemento.style.left = addUnit(prenda.position[0]);
+  elemento.style.top = addUnit(prenda.position[1]);
+  elemento.style.width = addUnit(prenda.size[0]);
+  elemento.style.height = addUnit(prenda.size[1]);
+};

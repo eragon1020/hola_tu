@@ -9,7 +9,7 @@
 }
 
 /* El body debe ser el fondo base */
-.modelo_body--femenino,.modelo_body--masculino {
+.modelo_body {
     position: relative;
     /* Importante para el posicionamiento relativo */
     width: 100%;
@@ -28,7 +28,7 @@
 /* Ajusta estos valores según el tamaño del modelo */
 
 .parte--cabeza {
-top: 10%;
+    top: 10%;
     left: 30%;
     width: 125px;
     height: 50px;
@@ -75,7 +75,7 @@ top: 10%;
 }
 
 /* La imagen del body */
-.modelo_body--femenino>img, .modelo_body--masculino>img {
+.modelo_body>img {
     position: relative;
     z-index: -1;
     /* Asegura que el body esté detrás de las prendas */
