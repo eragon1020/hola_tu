@@ -1,0 +1,130 @@
+body {
+  width: 100vw;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.image-container {
+  position: relative;
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+}
+
+#lock-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.418);
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px black, -5px -5px 10px pink;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: pink;
+  text-shadow: 2px 2px 5px black;
+}
+
+.number-wheel-container {
+  display: flex;
+  justify-content: center;
+}
+
+.number-wheel {
+  font-size: 40px;
+  width: 50px;
+  height: 70px;
+  background-color: #000;
+  color: pink;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+  line-height: 70px;
+  box-shadow: 5px 5px 10px black, -3px -3px 7px pink;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 30px;
+  font-size: 18px;
+  background-color: pink;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px black, -3px -3px 7px pink;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ff66cc;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #lock-screen {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .number-wheel {
+    font-size: 30px;
+    width: 40px;
+    height: 60px;
+    line-height: 60px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  button {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #lock-screen {
+    padding: 15px;
+  }
+
+  .number-wheel {
+    font-size: 25px;
+    width: 35px;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+}
