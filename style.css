@@ -29,7 +29,8 @@ body {
 
 #avataresGuardados {
     display: flex;
-    align-items: center
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 
