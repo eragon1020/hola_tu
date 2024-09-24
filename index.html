@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="./style2.css">
     <title>Candado Numérico Giratorio</title>
 </head>
 
 <body>
 
-    <img class="responsive-image" src="/img/feliz.jpg" alt="Imagen Responsive">
+    <img class="responsive-image" src="./img/feliz.jpg" alt="Imagen Responsive">
 
     <!-- Candado y clave -->
     <div id="lock-screen">
@@ -43,7 +43,7 @@
             const correctCombination = '409'; // Combinación correcta
 
             if (digit1 + digit2 + digit3 === correctCombination) {
-                window.location.href = '/juego.html'; // Redirigir al juego
+                window.location.href = './juego.html'; // Redirigir al juego
             } else {
                 alert("Combinación incorrecta. Intenta de nuevo");
             }
