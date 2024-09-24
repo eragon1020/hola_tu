@@ -10,7 +10,7 @@ body {
   text-align: center;
   background-image: url("./img/feliz.jpg");
   background-size: cover;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .image-container {
@@ -131,9 +131,11 @@ button:hover {
     font-size: 14px;
   }
 }
+
 @media (width <=700px) {
   body {
     background-image: url("./img/happy.png");
     background-size: cover;
     background-repeat: repeat-y;
-  }}
+  }
+}
