@@ -21,5 +21,38 @@ label.seleccionado img {
 }
 
 body {
-    background-color: rgb(144, 0, 255);
+    background-image: url('img/fondo.jpg');
+    font-family: "Lobster", sans-serif;
+        font-weight: 400;
+        font-style: normal;
 }
+
+#avataresGuardados     {
+    display: flex;
+    align-items: center
+    
+    }
+
+
+.pepino {
+
+background-color: black;
+border-radius: 10px;
+}
+
+#vestuario{
+
+    display: flex;
+}
+
+
+#guardarAvatar{
+
+        background-color: rgb(159, 0, 0);
+        border-radius: 10px;
+        color: rgb(255, 255, 255);
+        font-family: "Lobster", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: large;
+    }

@@ -39,10 +39,11 @@ document.getElementById("guardarAvatar").addEventListener("click", function () {
 
   // Añade un mensaje de amor
   const mensajeAmor = document.createElement("p");
-  mensajeAmor.textContent = "❤️ ¡Nuestros avatares juntos por siempre! ❤️";
+  mensajeAmor.textContent = "❤️ Aveces quiero ser cursi para decir : la amo a usted con locura.A veces tengo ganas de ser tonto para gritar : LA QUIERO TANTO !!!❤️";
   mensajeAmor.style.textAlign = "center";
-  mensajeAmor.style.fontSize = "20px";
+  mensajeAmor.style.fontSize = "30px";
   mensajeAmor.style.color = "red";
+  mensajeAmor.classList.add("pepino");
 
   // Añade el mensaje de amor solo si no existe ya
   if (!contenedorAvatares.querySelector("p")) {
