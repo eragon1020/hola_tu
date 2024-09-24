@@ -19,6 +19,7 @@ agregarRopa(
 
 document.getElementById("guardarAvatar").addEventListener("click", function () {
   // Selecciona los dos modelos (masculino y femenino)
+  document.getElementById("avataresGuardados").innerHTML = ""
   const modeloF = document.getElementById("modelo--f");
   const modeloM = document.getElementById("modelo--m");
 
