@@ -1,73 +1,88 @@
-// Función para crear el elemento <input> (radio) 
-const crearRadio = (prenda, body, aplicarRopaAlCuerpo) => {
-  let radio = document.createElement("input");
-  radio.type = "radio";
-  radio.id = prenda.id;
-  radio.name = prenda.type + body.gender.charAt(0);
+import { guardarAvatarComoPNG } from "./guardarAvatar.js";
 
-  // Agregar evento para aplicar la prenda al cuerpo cuando se selecciona el radio button
-  radio.addEventListener("change", () => {
-    aplicarRopaAlCuerpo(body, prenda); // Aplica la ropa al cuerpo
+export const crearElemento = (tipo, atributos = {}, contenido = null) => {
+  const elemento = document.createElement(tipo);
+  Object.entries(atributos).forEach(([key, value]) => {
+    if (key.startsWith('on')) {
+      elemento.addEventListener(key.slice(2).toLowerCase(), value);
+    } else {
+      elemento[key] = value;
+    }
   });
-
-  return radio;
+  if (contenido) elemento.appendChild(contenido);
+  return elemento;
 };
 
-// Función para crear el <img> de la prenda
-const crearImagenPrenda = (prenda) => {
-  let img = document.createElement("img");
-  img.src = prenda.img;
-  img.alt = prenda.name;
-  return img;
-};
+const crearRadio = (prenda, body) =>
+  crearElemento("input", { type: "radio", id: prenda.id, name: `${prenda.type}${body.gender.charAt(0)}` });
 
-// Función para crear el <label> y agregar evento de click
-const crearLabelPrenda = (prenda, li) => {
-  let label = document.createElement("label");
-  label.htmlFor = prenda.id;
+const crearImagenPrenda = (prenda) =>
+  crearElemento("img", { src: prenda.img, alt: prenda.name });
 
-  // Agregar la imagen al label
-  let img = crearImagenPrenda(prenda);
-  label.appendChild(img);
+const crearLabelPrenda = (prenda, body, li) => {
+  const label = crearElemento("label", { htmlFor: prenda.id });
+  label.appendChild(crearImagenPrenda(prenda));
 
-  // Agregar evento para seleccionar la prenda (visualmente)
   label.addEventListener("click", () => {
-    const labelsEnCategoria = li.querySelectorAll("label");
-    labelsEnCategoria.forEach((lbl) => lbl.classList.remove("seleccionado"));
-    label.classList.add("seleccionado");
+    const parteDelCuerpo = document.querySelector(`#modelo--${body.gender.charAt(0)} .parte--${prenda.type}`);
+    const prendaActual = parteDelCuerpo.querySelector(".prenda img");
+
+    if (prendaActual?.src.includes(prenda.img)) {
+      parteDelCuerpo.innerHTML = ""; // Desseleccionar prenda
+      label.classList.remove("seleccionado");
+    } else {
+      li.querySelectorAll("label").forEach(lbl => lbl.classList.remove("seleccionado"));
+      label.classList.add("seleccionado"); // Seleccionar nueva prenda
+      aplicarRopaAlCuerpo(body, prenda); // Aplicar nueva prenda
+    }
   });
 
   return label;
 };
 
-// Función para crear el <li> para cada categoría
-const crearLiCategoria = (categoria) => {
-  let li = document.createElement("li");
-  li.className = `cajon cajon--${categoria}`;
-  return li;
-};
+const crearLiCategoria = (categoria) =>
+  crearElemento("li", { className: `cajon cajon--${categoria}` });
 
-// Función principal para agregar la ropa
-export const agregarRopa = (ropa, contenedor, body, aplicarRopaAlCuerpo) => {
-  const ul = document.createElement("ul");
-  ul.className = `guardaropa guardaropa--${body.gender.charAt(0)}`;
-
+export const agregarRopa = (ropa, contenedor, body) => {
+  const ul = crearElemento("ul", { className: `guardaropa guardaropa--${body.gender.charAt(0)}` });
   const categorias = ["cabeza", "pecho", "pecho--externo", "piernas", "pies"];
 
-  categorias.forEach((categoria) => {
-    let li = crearLiCategoria(categoria);
-
-    ropa.forEach((prenda) => {
-      if (prenda.type === categoria && prenda.gender === body.gender) {
-        let radio = crearRadio(prenda, body, aplicarRopaAlCuerpo);
-        let label = crearLabelPrenda(prenda, li);
-
-        li.appendChild(label);
-        li.appendChild(radio);
-        ul.appendChild(li);
-      }
-    });
+  categorias.forEach(categoria => {
+    const li = crearLiCategoria(categoria);
+    ropa.filter(prenda => prenda.type === categoria && prenda.gender === body.gender)
+      .forEach(prenda => {
+        li.appendChild(crearLabelPrenda(prenda, body, li));
+        li.appendChild(crearRadio(prenda, body));
+      });
+    ul.appendChild(li);
   });
 
   contenedor.appendChild(ul);
+};
+
+export const aplicarRopaAlCuerpo = (body, prenda) => {
+  const parteDelCuerpo = document.querySelector(`#modelo--${body.gender.charAt(0)} .parte--${prenda.type}`);
+  const prendaActual = parteDelCuerpo.querySelector(".prenda img");
+
+  parteDelCuerpo.innerHTML = ""; // Limpiar antes de agregar una nueva prenda
+
+  if (!prendaActual || !prendaActual.src.includes(prenda.img)) {
+    const divPrenda = crearElemento("div", { classList: ["prenda"] });
+    divPrenda.appendChild(crearImagenPrenda(prenda));
+    parteDelCuerpo.appendChild(divPrenda);
+    generarEstilosCSS(parteDelCuerpo, prenda);
+  }
+};
+
+const generarEstilosCSS = (elemento, prenda) => {
+  elemento.style.position = 'absolute';
+  elemento.style.left = `${prenda.position[0]}px`;
+  elemento.style.top = `${prenda.position[1]}px`;
+  elemento.style.width = `${prenda.size[0]}px`;
+  elemento.style.height = `${prenda.size[1]}px`;
+};
+
+export const quitarRopa = (body) => {
+  const partesDelCuerpo = document.querySelectorAll(`#modelo--${body.gender.charAt(0)} .parte`);
+  partesDelCuerpo.forEach(parte => parte.innerHTML = ""); // Elimina todo el contenido de cada parte
 };
