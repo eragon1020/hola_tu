@@ -5,14 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style2.css">
-    <title>Candado Numérico Giratorio</title>
+    <title>Candado</title>
 </head>
 
 <body>
-
-    <img class="responsive-image" src="./img/feliz.jpg" alt="Imagen Responsive">
-
-    <!-- Candado y clave -->
     <div id="lock-screen">
         <h2>Introduce la combinación</h2>
 
@@ -22,7 +18,7 @@
             <div id="digit3" class="number-wheel" onclick="rotateWheel('digit3')">0</div>
         </div>
 
-        <button onclick="checkCombination()">Abrir</button>
+        <button onclick="checkCombination()">dame click</button>
     </div>
 
     <script>
@@ -45,7 +41,7 @@
             if (digit1 + digit2 + digit3 === correctCombination) {
                 window.location.href = './juego.html'; // Redirigir al juego
             } else {
-                alert("Combinación incorrecta. Intenta de nuevo");
+                alert("Combinación incorrecta, que tristeza ome.");
             }
         }
     </script>
