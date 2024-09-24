@@ -23,36 +23,35 @@ label.seleccionado img {
 body {
     background-image: url('img/fondo.jpg');
     font-family: "Lobster", sans-serif;
-        font-weight: 400;
-        font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 
-#avataresGuardados     {
+#avataresGuardados {
     display: flex;
     align-items: center
-    
-    }
+}
 
 
 .pepino {
 
-background-color: black;
-border-radius: 10px;
+    background-color: black;
+    border-radius: 10px;
 }
 
-#vestuario{
-
+#vestuario {
     display: flex;
+    flex-wrap: wrap;
 }
 
 
-#guardarAvatar{
+#guardarAvatar {
 
-        background-color: rgb(159, 0, 0);
-        border-radius: 10px;
-        color: rgb(255, 255, 255);
-        font-family: "Lobster", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: large;
-    }
+    background-color: rgb(159, 0, 0);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+}
